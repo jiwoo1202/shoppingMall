@@ -7,12 +7,18 @@ public class ProductDao {
 	private String description; // 상품 설명
 	private String maker; 		// 제조사
 	private String category; 	// 분류
-	private long stockCounts; 		// 재고수
+	private long stockCounts; 	// 재고수
 	private String condition;	//  상태(신제품, 중고품, 재생품)
 	private String fileName;	// 이미지 파일명
+	private int quantity; 		//장바구니에 담은 개수
 	
 	
-	
+	public int getQuantity() {
+		return quantity;
+	}
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
 	public String getFileName() {
 		return fileName;
 	}

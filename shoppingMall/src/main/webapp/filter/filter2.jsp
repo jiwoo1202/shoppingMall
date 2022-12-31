@@ -7,6 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	<form action="filter02_process.jsp" method="post">
+		<p> 아이디 : <input type="text" name="id">
+		<p> 비밀번호 : <input type="password" name="password">
+		<input type="submit">
+	</form>
 </body>
 </html>

@@ -7,9 +7,16 @@ import shoppingMall.dao.ProductDao;
 
 // DB와 통신을 해서 적당한 형태로 가공해서 dao객체를 만들어준다.
 public class ProductDto {
-	private List<ProductDao> productLists =  new ArrayList<ProductDao>();
-	public ProductDto() {		
-		makeProduct();
+	private static List<ProductDao> productLists =  null;
+	private static ProductDto instance = null;
+	public static ProductDto getProduct() {
+		if(instance == null) {
+			makeProduct();
+			instance = new ProductDto();
+		}
+		return instance;
+	}
+	private ProductDto() {		
 	}
 	public List<ProductDao> getAllProduct(){
 		return productLists;
@@ -20,7 +27,7 @@ public class ProductDto {
 	}
 	
 	// 상품을 구분하는 고유한 아이디인 productId을 가지고 상품의 전체 정보를 반환  P1236 전달
-	public ProductDao getProductbyId(String productId) {
+	public static ProductDao getProductbyId(String productId) {
 		ProductDao product = null;
 		for(ProductDao dao : productLists) {
 			if(productId != null && dao.getProductId().contentEquals(productId)) {
@@ -33,7 +40,7 @@ public class ProductDto {
 	}
 	
 	// 기본으로 3개의 상품을 만들어 주는 메소드
-	private void makeProduct() {
+	private static void makeProduct() {
 		productLists.add( new ProductDao(
 				"P1234", "iphone",1200000,"good ..." , "apple", "smartphone", 1000,"new"
 				,"P1234.png"

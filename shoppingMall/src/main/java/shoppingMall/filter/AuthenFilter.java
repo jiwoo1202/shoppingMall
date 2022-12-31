@@ -21,6 +21,7 @@ public class AuthenFilter implements Filter {
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain filterChain)
 			throws IOException, ServletException {
+		request.setCharacterEncoding("utf-8");
 		System.out.println("Filter01.jsp 수행.....");
 		String name = request.getParameter("name");
 		if(name == null || name.equals("")) {
